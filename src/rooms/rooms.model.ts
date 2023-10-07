@@ -3,7 +3,6 @@ import { Model } from "sequelize-typescript";
 import { Column, DataType, Table } from "sequelize-typescript";
 
 interface RoomCreationAttr{
-    id: number;
     name: string;
 }
 
