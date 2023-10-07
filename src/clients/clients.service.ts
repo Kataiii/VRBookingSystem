@@ -26,7 +26,7 @@ export class ClientsService {
 
     async getClientByFirstname(firstname: string){
         const clients = await this.clientsRepository.findAll({where: {firstname: firstname}});
-        if(clients === null) throw new HttpException({message: 'Клиенты не найден'}, HttpStatus.NOT_FOUND);
+        if(clients.length === 0) throw new HttpException({message: 'Клиенты не найден'}, HttpStatus.NOT_FOUND);
         return clients;
     }
 

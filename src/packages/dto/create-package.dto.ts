@@ -2,7 +2,7 @@ import { ApiProperty } from "@nestjs/swagger";
 import { PackageTypeGame } from "src/packages-types_game/packages-types_game.model";
 
 export class CreatePackageDto{
-    @ApiProperty({example: [PackageTypeGame], description: 'Набор типов пакетов', required: true})
+    @ApiProperty({example: 'PackageTypeGame', description: 'Набор типов пакетов', required: true})
     types_game: PackageTypeGame[];
 
     @ApiProperty({example: 'Базовый', description: 'Наименование пакета', required: true})
