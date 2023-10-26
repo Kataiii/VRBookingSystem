@@ -9,7 +9,7 @@ interface RoomCreationAttr{
 @Table({tableName: 'rooms'})
 export class Room extends Model<Room, RoomCreationAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ApiProperty({example: 'Комната 1', description: 'Название комнаты', required: true})

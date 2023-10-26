@@ -12,10 +12,10 @@ interface PackageClientCreationAttr{
     end_time: Date | null;
 }
 
-@Table({tableName: 'rooms'})
+@Table({tableName: 'packages-clients'})
 export class PackageClient extends Model<PackageClient, PackageClientCreationAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ApiProperty({example: 1, description: 'Id пакета', required: true})

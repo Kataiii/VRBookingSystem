@@ -16,7 +16,7 @@ interface BookingAttr{
 @Table({tableName: 'bookings'})
 export class Booking extends Model<Booking, BookingAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ForeignKey(() => Game)

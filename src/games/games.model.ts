@@ -20,7 +20,7 @@ interface GamesAttr{
 @Table({tableName: 'games'})
 export class Game extends Model<Game, GamesAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ApiProperty({example: 'Стрелялка', description: 'Название игры', required: true})

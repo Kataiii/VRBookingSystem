@@ -7,7 +7,7 @@ import { CreateBookingDto } from './dto/create-booking.dto';
 export class BookingsService {
     constructor(@InjectModel(Booking) private bookingsRepository: typeof Booking){}
 
-    async createRule(dto : CreateBookingDto){
+    async createBooking(dto : CreateBookingDto){
         const booking = await this.bookingsRepository.create(dto);
         return booking;
     }

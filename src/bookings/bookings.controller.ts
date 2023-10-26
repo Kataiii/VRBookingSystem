@@ -13,7 +13,7 @@ export class BookingsController {
     @ApiResponse({ status: 200, type: Booking})
     @Post()
     create(@Body() dto: CreateBookingDto){
-        return this.bookingsService.createRule(dto);
+        return this.bookingsService.createBooking(dto);
     }
 
     @ApiOperation({summary: 'Get all bookings'})

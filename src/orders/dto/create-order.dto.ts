@@ -5,7 +5,7 @@ export class CreateOrderDto{
     @ApiProperty({example: 1, description: 'Id клиента', required: true})
     id_client: number;
 
-    @ApiProperty({example: 'booking', description: 'Массив броней', required: true})
+    @ApiProperty({type: [Booking], description: 'Массив броней', required: true})
     bookings: Booking[];
 
     @ApiProperty({example: 1, description: 'Id пакета', required: false})

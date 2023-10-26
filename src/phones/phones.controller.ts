@@ -28,7 +28,7 @@ export class PhonesController {
     @ApiResponse({status: 200, type: Phone})
     @ApiResponse({ status: 404, description: 'Телефон не найден'})
     @Get('/id/:id')
-    getRoomById(@Param('id') id : number){
+    getRoomById(@Param('id') id : string){
         return this.phonesService.getPhoneById(id);
     }
 

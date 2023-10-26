@@ -14,7 +14,7 @@ interface PromoClientCreationAttr{
 @Table({tableName: 'promo_client'})
 export class PromoClient extends Model<PromoClient, PromoClientCreationAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ApiProperty({example: 'http:/111111111111111111', description: 'Ссылка на промо', required: true})

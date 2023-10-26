@@ -1,8 +1,9 @@
-import { Controller, Post, Get, Body, Param, UseGuards} from '@nestjs/common';
+import { Controller, Post, Get, Body, Param, UseGuards, Patch} from '@nestjs/common';
 import { RoomsService } from './rooms.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Room } from './rooms.model';
 import { CreateRoomDto } from './dto/create-room.dto';
+import { UpdateRoomDto } from './dto/update-room.dto';
 
 
 @ApiTags('Rooms')
@@ -39,5 +40,12 @@ export class RoomsController {
     @Get('/name/:name')
     getRoomByName(@Param('name') name: string){
         return this.roomsService.getRoomByName(name);
+    }
+
+    @ApiOperation({summary: 'Update room'})
+    @ApiResponse({ status: 200, type: Room})
+    @Patch()
+    updateRoom(@Body() dto: UpdateRoomDto){
+        return this.roomsService.update(dto);
     }
 }

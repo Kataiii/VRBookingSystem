@@ -1,7 +1,9 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { ForeignKey, Model } from "sequelize-typescript";
+import { BelongsToMany, ForeignKey, Model } from "sequelize-typescript";
 import { Column, DataType, Table } from "sequelize-typescript";
 import { Phone } from "src/phones/phones.model";
+import { ClientRoles } from "src/roles/additionaly-models/client-roles.model";
+import { Role } from "src/roles/roles.model";
 import { Status } from "src/statuses/statuses.model";
 import { TypeGame } from "src/types_game/types_game.model";
 
@@ -9,7 +11,7 @@ interface ClientAttr{
     surname: string | null;
     firstname: string;
     patronomyc: string | null;
-    id_phone: number;
+    id_phone: string;
     password: string | null;
     date_birthday: Date | null;
     number_of_bonuses: number | null;
@@ -19,7 +21,7 @@ interface ClientAttr{
 @Table({tableName: 'clients'})
 export class Client extends Model<Client, ClientAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ApiProperty({example: 'Иванов', description: 'Фамилия', required: false})
@@ -35,9 +37,9 @@ export class Client extends Model<Client, ClientAttr>{
     patronomyc: string | null;
 
     @ApiProperty({example: 1, description: 'Уникальный идентификатор телефона', required: true})
-    @Column({type: DataType.INTEGER, unique: true, allowNull: false})
+    @Column({type: DataType.STRING, unique: true, allowNull: false})
     @ForeignKey(() => Phone)
-    id_phone: number;
+    id_phone: string;
 
     @ApiProperty({example: '123456', description: 'Пароль', required: false})
     @Column({type: DataType.STRING, unique: false, allowNull: true})
@@ -55,4 +57,7 @@ export class Client extends Model<Client, ClientAttr>{
     @Column({type: DataType.INTEGER, unique: false, allowNull: false, defaultValue: 1})
     @ForeignKey(() => Status)
     id_status: number;
+
+    @BelongsToMany(() => Role, () => ClientRoles)
+    roles: Role[];
 }

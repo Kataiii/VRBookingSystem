@@ -31,6 +31,10 @@ import { PromosModule } from './promos/promos.module';
 import { PromoGame } from './promos/additionaly_models/promos_games.model';
 import { PromoTypeGame } from './promos/additionaly_models/promos_types_game.model';
 import { Promo } from './promos/promos.model';
+import { AuthModule } from './auth/auth.module';
+import { RolesModule } from './roles/roles.module';
+import { Role } from './roles/roles.model';
+import { ClientRoles } from './roles/additionaly-models/client-roles.model';
 
 @Module({
   imports: [
@@ -60,7 +64,9 @@ import { Promo } from './promos/promos.model';
         Client,
         Promo,
         PromoGame,
-        PromoTypeGame
+        PromoTypeGame,
+        Role,
+        ClientRoles
       ],
       autoLoadModels: true
     }),
@@ -78,6 +84,8 @@ import { Promo } from './promos/promos.model';
     PackagesTypesGameModule,
     ClientsModule,
     PromosModule,
+    AuthModule,
+    RolesModule,
   ]
 })
 export class AppModule {}

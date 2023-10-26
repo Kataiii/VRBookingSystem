@@ -19,7 +19,7 @@ interface PackageAttr{
 @Table({tableName: 'packages'})
 export class Package extends Model<Package, PackageAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @HasMany(() => PackageTypeGame)

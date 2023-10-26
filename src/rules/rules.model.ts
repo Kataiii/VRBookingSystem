@@ -9,7 +9,7 @@ interface RulesAttr{
 @Table({tableName: 'rules'})
 export class Rule extends Model<Rule, RulesAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ApiProperty({example: 'Если у clients количество bookings больше 5, то назначить package 3', description: 'Правило назначения промокодов и пакетов', required: true})

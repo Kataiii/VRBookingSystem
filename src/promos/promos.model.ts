@@ -13,7 +13,7 @@ interface PromoCreationAttr{
 @Table({tableName: 'promos'})
 export class Promo extends Model<Promo, PromoCreationAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ApiProperty({example: 'Промо 1', description: 'Название промо', required: true})

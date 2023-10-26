@@ -18,7 +18,7 @@ interface OrderAttr{
 @Table({tableName: 'orders'})
 export class Order extends Model<Order, OrderAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true })
     id: number;
 
     @ForeignKey(() => Client)

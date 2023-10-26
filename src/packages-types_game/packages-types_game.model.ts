@@ -12,7 +12,7 @@ interface PackageTypeGameCreationAttr{
 @Table({tableName: 'packages-types_game'})
 export class PackageTypeGame extends Model<PackageTypeGame, PackageTypeGameCreationAttr>{
     @ApiProperty({example: 1, description: 'Уникальный идентификатор', required: true})
-    @Column({type: DataType.INTEGER, unique: true, primaryKey: true})
+    @Column({type: DataType.INTEGER, unique: true, primaryKey: true, autoIncrement: true})
     id: number;
 
     @ApiProperty({example: 1, description: 'Id пакета', required: true})

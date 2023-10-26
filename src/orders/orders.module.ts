@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { BookingsModule } from 'src/bookings/bookings.module';
 import { OrdersController } from './orders.controller';
 import { Order } from './orders.model';
 import { OrdersService } from './orders.service';
@@ -8,7 +9,8 @@ import { OrdersService } from './orders.service';
   controllers: [OrdersController],
   providers: [OrdersService],
   imports: [
-    SequelizeModule.forFeature([Order])
+    SequelizeModule.forFeature([Order]),
+    BookingsModule
   ]
 })
 export class OrdersModule {}

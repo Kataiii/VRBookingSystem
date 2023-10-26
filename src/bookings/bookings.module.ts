@@ -9,6 +9,9 @@ import { BookingsService } from './bookings.service';
   providers: [BookingsService],
   imports: [
     SequelizeModule.forFeature([Booking])
+  ],
+  exports: [
+    BookingsService
   ]
 })
 export class BookingsModule {}
