@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsInt, IsNumber, Min } from "class-validator";
-import { IsBoolean, ValidateIf } from "class-validator/types/decorator/decorators";
+import { IsInt, IsNumber, Min, IsBoolean, ValidateIf } from "class-validator";
 import { Booking } from "src/bookings/bookings.model";
+
 
 export class CreateOrderDto{
     @IsInt({message:'Должно быть числом'})

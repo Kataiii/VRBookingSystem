@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsString } from "class-validator";
-import { IsInt, Min } from "class-validator/types/decorator/decorators";
+import { IsString, IsInt, Min } from "class-validator";
+
 
 export class CreateTypeGameDto{
     @IsString({message: 'Должно быть строкой'})

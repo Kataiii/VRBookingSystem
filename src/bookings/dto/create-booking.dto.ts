@@ -1,5 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsDate, IsInt, Min, ValidateIf } from "class-validator/types/decorator/decorators";
+import { IsDate, IsInt, Min, ValidateIf } from "class-validator";
 
 export class CreateBookingDto{
     @IsInt({message: 'Должно быть числом'})

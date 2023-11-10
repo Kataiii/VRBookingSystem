@@ -1,6 +1,5 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsNumber, IsString, Min, ValidateIf } from "class-validator";
-import { IsDate, IsInt } from "class-validator/types/decorator/decorators";
+import { IsNumber, IsString, Min, ValidateIf, IsDate, IsInt } from "class-validator";
 import { Game } from "src/games/games.model";
 import { TypeGame } from "src/types_game/types_game.model";
 

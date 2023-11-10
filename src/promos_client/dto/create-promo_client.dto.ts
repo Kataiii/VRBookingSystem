@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsInt, IsString, Min } from "class-validator";
-import { IsBoolean, IsDate, ValidateIf } from "class-validator/types/decorator/decorators";
+import { IsInt, IsString, Min, IsBoolean, IsDate, ValidateIf } from "class-validator";
+
 
 export class CreatePromoClientDto{
     @IsString({message: 'Должно быть строкой'})

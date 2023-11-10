@@ -1,7 +1,7 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsInt, IsString, ValidateIf } from "class-validator";
-import { IsDate, Min } from "class-validator/types/decorator/decorators";
+import { IsInt, IsString, ValidateIf, IsDate, Min  } from "class-validator";
 import { PackageTypeGame } from "src/packages-types_game/packages-types_game.model";
+
 
 export class CreatePackageDto{
     @ApiProperty({example: 'PackageTypeGame', description: 'Набор типов пакетов', required: true})

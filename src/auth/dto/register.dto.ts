@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsPhoneNumber, IsString, ValidateIf } from "class-validator";
-import { IsDate, Length } from "class-validator/types/decorator/decorators";
+import { IsPhoneNumber, IsString, ValidateIf, IsDate, Length } from "class-validator";
+
 
 export class RegisterDto{
     @IsString({message: 'Должно быть строкой'})

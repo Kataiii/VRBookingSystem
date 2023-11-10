@@ -1,6 +1,6 @@
 import { ApiProperty } from "@nestjs/swagger";
-import { IsInt, IsString } from "class-validator";
-import { Min } from "class-validator/types/decorator/decorators";
+import { IsInt, IsString, Min } from "class-validator";
+
 
 export class CreateWorkDayDto{
     @IsString({message: 'Должно быть строкой'})
