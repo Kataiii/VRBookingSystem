@@ -38,6 +38,7 @@ import { ClientRoles } from './roles/additionaly-models/client-roles.model';
 import { WorkDaysModule } from './work_days/work_days.module';
 import { WorkDay } from './work_days/work_days.model';
 import { TokensModule } from './auth/tokens/tokens.module';
+import { Token } from './auth/tokens/tokens.model';
 
 @Module({
   imports: [
@@ -70,7 +71,8 @@ import { TokensModule } from './auth/tokens/tokens.module';
         PromoTypeGame,
         Role,
         ClientRoles,
-        WorkDay
+        WorkDay,
+        Token
       ],
       autoLoadModels: true
     }),
