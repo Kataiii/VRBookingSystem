@@ -1,7 +1,8 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UploadedFile, UploadedFiles, UseInterceptors } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreateGameDto } from './dto/create-game.dto';
 import { Game } from './games.model';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { GamesService } from './games.service';
 
 @ApiTags('Games')
@@ -11,9 +12,10 @@ export class GamesController {
 
     @ApiOperation({summary: 'Create game'})
     @ApiResponse({ status: 200, type: Game})
+    @UseInterceptors(FileInterceptor('file'))
     @Post()
-    create(@Body() dto: CreateGameDto){
-        return this.gamesService.createGame(dto);
+    create(@Body() dto: CreateGameDto, @UploadedFile() file){
+        return this.gamesService.createGame(dto, file);
     }
 
     @ApiOperation({summary: 'Get all games'})

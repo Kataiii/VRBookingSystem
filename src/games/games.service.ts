@@ -1,14 +1,21 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/sequelize';
+import { FilesService } from 'src/files/files.service';
 import { CreateGameDto } from './dto/create-game.dto';
 import { Game } from './games.model';
 
 @Injectable()
 export class GamesService {
-    constructor(@InjectModel(Game) private gamesRepository: typeof Game){}
+    constructor(@InjectModel(Game) private gamesRepository: typeof Game,
+                                    private filesService:FilesService){}
 
-    async createGame(dto : CreateGameDto){
-        const rule = await this.gamesRepository.create(dto);
+    async createGame(dto : CreateGameDto, file: any){
+        const link: string = await this.filesService.createFile(
+            file, 
+            file.originalname.slice(file.originalname.lastIndexOf('.'), file.originalname.length), 
+            'pictures_games'
+        );
+        const rule = await this.gamesRepository.create({...dto, image: link});
         return rule;
     }
 

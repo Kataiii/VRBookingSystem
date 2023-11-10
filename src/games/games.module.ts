@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { SequelizeModule } from '@nestjs/sequelize';
+import { FilesModule } from 'src/files/files.module';
 import { PromoGame } from 'src/promos/additionaly_models/promos_games.model';
 import { Promo } from 'src/promos/promos.model';
 import { GamesController } from './games.controller';
@@ -10,7 +11,8 @@ import { GamesService } from './games.service';
   controllers: [GamesController],
   providers: [GamesService],
   imports: [
-    SequelizeModule.forFeature([Game, Promo, PromoGame])
+    SequelizeModule.forFeature([Game, Promo, PromoGame]),
+    FilesModule
   ]
 })
 export class GamesModule {}
