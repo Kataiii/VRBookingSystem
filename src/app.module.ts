@@ -35,6 +35,8 @@ import { AuthModule } from './auth/auth.module';
 import { RolesModule } from './roles/roles.module';
 import { Role } from './roles/roles.model';
 import { ClientRoles } from './roles/additionaly-models/client-roles.model';
+import { WorkDaysModule } from './work_days/work_days.module';
+import { WorkDay } from './work_days/work_days.model';
 
 @Module({
   imports: [
@@ -66,7 +68,8 @@ import { ClientRoles } from './roles/additionaly-models/client-roles.model';
         PromoGame,
         PromoTypeGame,
         Role,
-        ClientRoles
+        ClientRoles,
+        WorkDay
       ],
       autoLoadModels: true
     }),
@@ -86,6 +89,7 @@ import { ClientRoles } from './roles/additionaly-models/client-roles.model';
     PromosModule,
     AuthModule,
     RolesModule,
+    WorkDaysModule,
   ]
 })
 export class AppModule {}

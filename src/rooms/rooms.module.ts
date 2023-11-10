@@ -10,6 +10,9 @@ import { Room } from './rooms.model';
   providers: [RoomsService],
   imports: [
     SequelizeModule.forFeature([Room])
+  ],
+  exports: [
+    RoomsService
   ]
 })
 export class RoomsModule {}
