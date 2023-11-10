@@ -37,6 +37,7 @@ import { Role } from './roles/roles.model';
 import { ClientRoles } from './roles/additionaly-models/client-roles.model';
 import { WorkDaysModule } from './work_days/work_days.module';
 import { WorkDay } from './work_days/work_days.model';
+import { TokensModule } from './auth/tokens/tokens.module';
 
 @Module({
   imports: [
@@ -90,6 +91,7 @@ import { WorkDay } from './work_days/work_days.model';
     AuthModule,
     RolesModule,
     WorkDaysModule,
+    TokensModule,
   ]
 })
 export class AppModule {}
