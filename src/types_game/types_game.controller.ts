@@ -1,5 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/auth/guards/decorators/roles-auth.decorator';
+import { RolesAuthGuard } from 'src/auth/guards/roles-auth.guard';
 import { CreateTypeGameDto } from './dto/create-type_game.dto';
 import { TypeGame } from './types_game.model';
 import { TypesGameService } from './types_game.service';
@@ -12,6 +14,8 @@ export class TypesGameController {
     @ApiOperation({summary: 'Create type game'})
     @ApiResponse({ status: 200, type: TypeGame})
     @Post()
+    @Roles('admin')
+    @UseGuards(RolesAuthGuard)
     create(@Body() dto: CreateTypeGameDto){
         return this.typesGameService.createTypeGame(dto);
     }

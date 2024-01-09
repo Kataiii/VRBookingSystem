@@ -4,6 +4,8 @@ import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { Room } from './rooms.model';
 import { CreateRoomDto } from './dto/create-room.dto';
 import { UpdateRoomDto } from './dto/update-room.dto';
+import { Roles } from 'src/auth/guards/decorators/roles-auth.decorator';
+import { RolesAuthGuard } from 'src/auth/guards/roles-auth.guard';
 
 
 @ApiTags('Rooms')
@@ -14,6 +16,8 @@ export class RoomsController {
     @ApiOperation({summary: 'Create room'})
     @ApiResponse({ status: 200, type: Room})
     @Post()
+    @Roles('admin')
+    @UseGuards(RolesAuthGuard)
     create(@Body() dto: CreateRoomDto){
         return this.roomsService.createRoom(dto);
     }

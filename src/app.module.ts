@@ -37,11 +37,21 @@ import { Role } from './roles/roles.model';
 import { ClientRoles } from './roles/additionaly-models/client-roles.model';
 import { WorkDaysModule } from './work_days/work_days.module';
 import { WorkDay } from './work_days/work_days.model';
+import { TokensModule } from './auth/tokens/tokens.module';
+import { Token } from './auth/tokens/tokens.model';
+import { FilesModule } from './files/files.module';
+import { ServeStaticModule } from "@nestjs/serve-static";
+import { join } from 'path';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       envFilePath: `.${process.env.NODE_ENV}.env`
+    }),
+    ServeStaticModule.forRoot({
+      // rootPath: path.resolve(__dirname, 'static'),
+      rootPath: join(__dirname, '..', 'static'),
+      exclude: ['/(.*)']
     }),
     SequelizeModule.forRoot({
       dialect: 'postgres',
@@ -69,7 +79,8 @@ import { WorkDay } from './work_days/work_days.model';
         PromoTypeGame,
         Role,
         ClientRoles,
-        WorkDay
+        WorkDay,
+        Token
       ],
       autoLoadModels: true
     }),
@@ -90,6 +101,8 @@ import { WorkDay } from './work_days/work_days.model';
     AuthModule,
     RolesModule,
     WorkDaysModule,
+    TokensModule,
+    FilesModule,
   ]
 })
 export class AppModule {}

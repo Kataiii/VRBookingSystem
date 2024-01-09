@@ -1,5 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/auth/guards/decorators/roles-auth.decorator';
+import { RolesAuthGuard } from 'src/auth/guards/roles-auth.guard';
 import { CreatePhoneDto } from './dto/create-phone.dto';
 import { Phone } from './phones.model';
 import { PhonesService } from './phones.service';
@@ -12,6 +14,8 @@ export class PhonesController {
     @ApiOperation({summary: 'Create phone'})
     @ApiResponse({ status: 200, type: Phone})
     @Post()
+    @Roles('admin')
+    @UseGuards(RolesAuthGuard)
     create(@Body() dto: CreatePhoneDto){
         return this.phonesService.createPhone(dto);
     }

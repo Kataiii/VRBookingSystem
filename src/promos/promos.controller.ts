@@ -1,5 +1,7 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, UseGuards } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Roles } from 'src/auth/guards/decorators/roles-auth.decorator';
+import { RolesAuthGuard } from 'src/auth/guards/roles-auth.guard';
 import { CreatePromoDto } from './dto/create-promo.dto';
 import { Promo } from './promos.model';
 import { PromosService } from './promos.service';
@@ -12,6 +14,8 @@ export class PromosController {
     @ApiOperation({summary: 'Create promo'})
     @ApiResponse({ status: 200, type: Promo})
     @Post()
+    @Roles('admin')
+    @UseGuards(RolesAuthGuard)
     create(@Body() dto: CreatePromoDto){
         return this.promosService.createPromo(dto);
     }
