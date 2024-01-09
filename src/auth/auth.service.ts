@@ -16,6 +16,7 @@ export class AuthService {
                 private tokensService: TokensService){}
 
     async register(dto: RegisterDto, ip){
+        console.log(dto.firstname);
         let phones = await this.phonesService.getPhones();
         if(phones.length > 0){
             let check_phone = phones.find(item => item.phone == dto.phone);
@@ -24,14 +25,17 @@ export class AuthService {
             }
         }
         const id_phone = await this.phonesService.generateIdPhone();
+        console.log(dto.phone);
         const phone = await this.phonesService.createPhone({id: id_phone, phone: dto.phone});
+        console.log('1');
+        const date_birthday = new Date(dto.date_birthday);
         const client = await this.clientsService.createClient({
             surname: dto.surname,
             firstname: dto.firstname,
             patronomyc: dto.patronomyc,
             password: dto.password,
             id_phone: id_phone,
-            date_birthday: dto.date_birthday
+            date_birthday: date_birthday
         });
 
         const refreshToken = this.tokensService.generateRefreshToken(client);

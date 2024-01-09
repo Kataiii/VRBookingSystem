@@ -21,6 +21,7 @@ export class AuthController {
     @Post('/register')
     @Public()
     async register(@Body() dto: RegisterDto, @Ip() ip, @Res({ passthrough: true }) response: Response){
+        console.log(dto);
         let tokens = await this.authService.register(dto, ip);
         response.cookie('refreshToken', tokens.refreshToken, {maxAge: 30*24*60*60*1000, httpOnly: true});
         return tokens;
