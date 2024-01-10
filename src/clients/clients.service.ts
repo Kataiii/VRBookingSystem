@@ -17,29 +17,29 @@ export class ClientsService {
         const role = await this.rolesService.getRoleByName('user');
         await client.$set('roles', [role.id]);
         client.roles = [role];
-        return client;
+        return await this.getClientById(client.id);
     }
 
     async getAll(){
-        const clients = await this.clientsRepository.findAll();
+        const clients = await this.clientsRepository.findAll({include:{all:true}});
         if(clients.length === 0) throw new HttpException({message: 'Клиенты не найдены'}, HttpStatus.NOT_FOUND);
         return clients;
     }
 
     async getClientById(id: number){
-        const client = await this.clientsRepository.findOne({where: {id: id}});
+        const client = await this.clientsRepository.findOne({where: {id: id}, include: {all: true}});
         if(client === null) throw new HttpException({message: 'Клиент не найден'}, HttpStatus.NOT_FOUND);
         return client;
     }
 
     async getClientByFirstname(firstname: string){
-        const clients = await this.clientsRepository.findAll({where: {firstname: firstname}});
+        const clients = await this.clientsRepository.findAll({where: {firstname: firstname}, include: {all: true}});
         if(clients.length === 0) throw new HttpException({message: 'Клиенты не найден'}, HttpStatus.NOT_FOUND);
         return clients;
     }
 
     async getClientByPhoneId(id_phone: number){
-        const client = await this.clientsRepository.findOne({where: {id_phone: id_phone}});
+        const client = await this.clientsRepository.findOne({where: {id_phone: id_phone}, include: {all: true}});
         if(client === null) throw new HttpException({message: 'Клиент не найден'}, HttpStatus.NOT_FOUND);
         return client;
     }

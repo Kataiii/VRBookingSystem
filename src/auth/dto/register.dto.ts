@@ -17,7 +17,7 @@ export class RegisterDto{
     @ApiProperty({example: 'Иванович', description: 'Отчество', required: false})
     patronomyc?: string;
 
-    // @IsPhoneNumber('RU', {message: 'Неверный номер телефона'})
+    @IsPhoneNumber('RU', {message: 'Неверный номер телефона'})
     @ApiProperty({example: 'ХХХХХХХХХХ', description: 'Телефон', required: true})
     phone: string;
 
